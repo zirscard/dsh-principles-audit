@@ -1,0 +1,15 @@
+{
+  "applies_to": "modules/m2_principles",
+  "updated_at": "2026-10-19",
+  "note": "M2 结构一致性门禁豁免表。8 条 id-collision 全部来自旧版项目内 ID（PR-001…PR-008 在 14 个数据集复用）。处置计划：M2 下一版统一迁移为全局 PR-D##-####（V1.5 全局注册表）。到期未迁移则豁免失效，门禁回到 fail。登记来源：内部评审记录，2026-10-19。",
+  "exemptions": [
+    { "code": "id-collision", "principle_id": "PR-001", "owner": "maintainer", "reason": "旧版项目内 ID，下一版统一迁移为全局 PR-D##-####", "expires_at": "2026-11-30" },
+    { "code": "id-collision", "principle_id": "PR-002", "owner": "maintainer", "reason": "旧版项目内 ID，下一版统一迁移为全局 PR-D##-####", "expires_at": "2026-11-30" },
+    { "code": "id-collision", "principle_id": "PR-003", "owner": "maintainer", "reason": "旧版项目内 ID，下一版统一迁移为全局 PR-D##-####", "expires_at": "2026-11-30" },
+    { "code": "id-collision", "principle_id": "PR-004", "owner": "maintainer", "reason": "旧版项目内 ID，下一版统一迁移为全局 PR-D##-####", "expires_at": "2026-11-30" },
+    { "code": "id-collision", "principle_id": "PR-005", "owner": "maintainer", "reason": "旧版项目内 ID，下一版统一迁移为全局 PR-D##-####", "expires_at": "2026-11-30" },
+    { "code": "id-collision", "principle_id": "PR-006", "owner": "maintainer", "reason": "旧版项目内 ID，下一版统一迁移为全局 PR-D##-####", "expires_at": "2026-11-30" },
+    { "code": "id-collision", "principle_id": "PR-007", "owner": "maintainer", "reason": "旧版项目内 ID，下一版统一迁移为全局 PR-D##-####", "expires_at": "2026-11-30" },
+    { "code": "id-collision", "principle_id": "PR-008", "owner": "maintainer", "reason": "旧版项目内 ID，下一版统一迁移为全局 PR-D##-####", "expires_at": "2026-11-30" }
+  ]
+}

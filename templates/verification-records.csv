@@ -1,0 +1,4 @@
+record_id,principle_id,occurred_at,result,project_ref,scenario,evidence,source,recorded_by
+VR-2026-0001,<项目B>-PR-001,2026-09-30,hit,<项目B>,2026Q3 债务集中到期前完成展期,投后报告：2027 年到期借款已签展期协议,投后报告,manual
+VR-2026-0002,<项目B>-PR-001,2026-10-15,hit,<项目B>,流动性覆盖 18 个月,月度资金表：货币资金覆盖 18 个月支出,投后月报,daily_three_review
+VR-2026-0003,项目A-PR-002,2026-10-10,hit,项目A,可比 PS 回落至 8x,可比公司年报：PS 中位 8x，估值差收敛,年报,manual

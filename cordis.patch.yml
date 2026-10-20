@@ -1,0 +1,6 @@
+# dsh-principles-audit bundle patch: one host-only row (agent tool + system
+# prompt section). No client half, no routes, no ledger — the audit engine is
+# pure Node ESM and runs in the host process.
+- insert:
+    - id: principles-audit
+      name: dsh-principles-audit

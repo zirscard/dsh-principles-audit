@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-10-19",
+  "method": "V1.5 映射文本相似度 + 机制关键词重合 + 人工纠偏（低估值反向条件/对赌不同机制已降弱）",
+  "usage": "把要回填的候选人 confirmed 改为 true（可增删 pattern_present_project_ids 里的项目），然后运行：node cross-cli.js --library <root> apply --confirm templates/p1-d07-cross-confirm.json",
+  "candidates": [
+    {
+      "principle_id": "项目A-PR-002",
+      "confirmed": false,
+      "pattern_present_project_ids": [
+        "项目A",
+        "项目C",
+        "项目F-项目决策会议案提交单",
+        "项目P",
+        "<项目B>",
+        "项目K项目决策会议案提交单"
+      ],
+      "suggested_cross": 6,
+      "note": "5 个强匹配（高PS 同 IF）→ cross=6 ✓；低估值两条已纠偏降弱"
+    },
+    {
+      "principle_id": "<项目B>-PR-001",
+      "confirmed": false,
+      "pattern_present_project_ids": [
+        "<项目B>",
+        "项目F-项目决策会议案提交单",
+        "项目A"
+      ],
+      "suggested_cross": 3,
+      "note": "2 个强匹配（持续亏损+现金流为负）→ cross=3 ✓；<项目A>为弱项，确认可加"
+    },
+    {
+      "principle_id": "项目C-PR-006",
+      "confirmed": false,
+      "pattern_present_project_ids": [
+        "项目C",
+        "<项目B>"
+      ],
+      "suggested_cross": 2,
+      "note": "与<项目B>-PR-006 互为唯一强匹配 → cross=2，未达 3；弱族（IPO 资质障碍）默认不勾"
+    },
+    {
+      "principle_id": "<项目B>-PR-006",
+      "confirmed": false,
+      "pattern_present_project_ids": [
+        "<项目B>",
+        "项目C"
+      ],
+      "suggested_cross": 2,
+      "note": "同上，cross=2，未达 3"
+    },
+    {
+      "principle_id": "项目E-PR-001",
+      "confirmed": false,
+      "pattern_present_project_ids": [
+        "项目E"
+      ],
+      "suggested_cross": 1,
+      "note": "无同 IF 机制实例 → cross=1；建议换出试点，等 P2 外部反例"
+    }
+  ]
+}

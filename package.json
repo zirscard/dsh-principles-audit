@@ -1,0 +1,43 @@
+{
+  "name": "dsh-principles-audit",
+  "version": "0.3.0",
+  "description": "Principle-library auditor for DeepSeek Harness: one principles_audit tool that checks a principle library for principle_id collisions, legacy ids, missing causal statements, boundaries, counter-examples or evidence, duplicate and near-duplicate principles, status-versus-confidence inconsistencies, stale entries and dimension-coverage gaps, then reports severity-ranked findings plus a pass/warn/fail gate. Read-only.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "principles-audit": "./cli.js"
+  },
+  "files": [
+    "index.js",
+    "cli.js",
+    "seal-cli.js",
+    "vr-cli.js",
+    "cross-cli.js",
+    "core/",
+    "templates/",
+    "exemptions/",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zirscard/dsh-principles-audit.git"
+  },
+  "homepage": "https://github.com/zirscard/dsh-principles-audit#readme",
+  "bugs": {
+    "url": "https://github.com/zirscard/dsh-principles-audit/issues"
+  }
+}
