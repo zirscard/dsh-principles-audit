@@ -189,7 +189,7 @@ export function apply(ctx) {
     parameters: {
       path: {
         type: 'string',
-        description: 'V2 root directory, data/ directory, or a principles.json file. Defaults to $DSH_PRINCIPLES_AUDIT_DIR or the current working directory.',
+        description: 'V2 root directory (e.g. <principle-library>), data/ directory, or a principles.json file. Defaults to <principle-library>.',
       },
       outputDir: {
         type: 'string',

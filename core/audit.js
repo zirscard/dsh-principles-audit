@@ -148,7 +148,7 @@ export function discover(inputPath) {
     throw new Error(`路径不存在：${abs}`)
   }
   try {
-    abs = realpathSync(abs) // 解析符号链接（原则库可能是指向实际模块目录的软链）
+    abs = realpathSync(abs) // 解析符号链接（如 <principle-library> → knowledge_harness/modules/m2_principles）
   } catch {
     /* 解析失败时保留原路径 */
   }
@@ -203,7 +203,7 @@ function loadMapping(root, input) {
   }
   const candidates = []
   for (const base of bases) {
-    candidates.push(join(base, 'principle-dimension-mapping.json'))
+    candidates.push(join(base, 'v3v4-review', 'principle-dimension-mapping.json'))
     candidates.push(join(base, 'principle-dimension-mapping.json'))
     candidates.push(join(base, 'data', 'principle-dimension-mapping.json'))
   }
@@ -713,7 +713,7 @@ export function audit(options = {}) {
       severity: 'info',
       code: 'dimension-unmapped',
       title: '未找到 V1.5 维度映射',
-      detail: '跳过维度覆盖检查；如需启用，把 principle-dimension-mapping.json 放在 V2 根目录',
+      detail: '跳过维度覆盖检查；如需启用，把 principle-dimension-mapping.json 放在 V2 同级 v3v4-review/ 或 V2 根目录',
     })
   } else {
     const mapping = discovered.mapping
@@ -1214,7 +1214,7 @@ function writeReports(payload, preferredDir, root) {
 export function defaultInput() {
   const override = process.env.DSH_PRINCIPLES_AUDIT_DIR
   if (typeof override === 'string' && override.trim() !== '') return override
-  const candidate = process.env.DSH_PRINCIPLES_AUDIT_DIR || join(process.cwd(), 'principle-dashboard-v2')
+  const candidate = join(homedir(), 'wps云盘', '<材料目录>', 'principle-dashboard-v2')
   if (existsSync(candidate)) return candidate
   return undefined
 }

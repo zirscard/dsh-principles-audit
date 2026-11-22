@@ -38,7 +38,7 @@ function parseArgs(argv) {
 function defaultLibrary() {
   const override = process.env.DSH_PRINCIPLES_AUDIT_DIR
   if (typeof override === 'string' && override.trim() !== '') return override
-  return resolve(process.env.DSH_PRINCIPLES_AUDIT_DIR || join(process.cwd(), 'principle-dashboard-v2'))
+  return resolve(homedir(), 'wps云盘', '<材料目录>', 'principle-dashboard-v2')
 }
 
 function today() {

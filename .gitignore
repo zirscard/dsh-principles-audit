@@ -1,20 +1,9 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-
-# Node
 node_modules/
-
-# Local outputs
+__pycache__/
+*.pyc
+.DS_Store
 test-output/
 test/tmp/
-test/tmp-*/
-*.tgz
-
-# Environment
-.env
-.env.*
-
-# macOS
-.DS_Store
+.audit/
+_deps/
+sign/backup/

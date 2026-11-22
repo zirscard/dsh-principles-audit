@@ -3,7 +3,7 @@
  *
  * v0.4：实现「封版 + 继任 + 哈希链账本」。设计见
  * <internal-docs>/docs/principle-seal-and-supersession-v0.1.md
- * 与 principles.schema.json 的 I7–I11 不变式。
+ * 与 v1-design/schemas/principles.schema.json 的 I7–I11 不变式。
  *
  * 纯 Node ESM，零运行时依赖。本模块不 import audit.js（避免循环依赖）；
  * 操作端 CLI 自行组合 discover() 与本模块。

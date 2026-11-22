@@ -36,7 +36,7 @@
 
 - `data/v1-input/principles.json`（汇总）
 - `data/projects/*/principles.json`（分项目）
-- 同级或根目录下的 `principle-dimension-mapping.json`（V1.5 维度映射，可选）
+- 同级 `../v3v4-review/principle-dimension-mapping.json`（V1.5 维度映射，可选）
 - `config/scoring.json`（状态/置信度规则，可选）
 
 ## 三、检查项
@@ -83,7 +83,7 @@ principles_audit(
 ```bash
 NODE="$HOME/.dsh/dsh-runtimes/dsh-primary-runtime/dependencies/node/bin/node"
 cd "<plugin-dir>/dsh-principles-audit"
-"$NODE" cli.js --path "$HOME/<principle-library>" \
+"$NODE" cli.js --path "$HOME/wps云盘/<principle-library>" \
   --output ./test-output
 ```
 
@@ -136,15 +136,15 @@ CLI="/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh"
 
 **豁免表** `exemptions/exemptions.json`（本插件自带，`applies_to: modules/m2_principles` 限定作用域）：
 
-- 8 条 `id-collision`（裸 PR-001…008），owner `maintainer`，到期 **2026-11-30**，处置计划 = 下一版迁全局 `PR-D##-####`。
+- 8 条 `id-collision`（裸 PR-001…008），owner `maintainer`，到期 **2026-11-30**，处置计划 = 下一版迁全局 `PR-D##-####`（用户 2026-10-19 决定，M2 卡 internal-card）。
 - 当前库严重项已清零，豁免表处于**休眠保护**状态：若裸 ID 回流（回滚/旧数据恢复），门禁自动降为 warn 至 2026-11-30，逾期回 fail。
 - 发现顺序：`--exemptions` 参数 > `DSH_PRINCIPLES_AUDIT_EXEMPTIONS` > `<root>/.principles-audit/exemptions.json` > 插件自带。
 
-**总线挂载**（2026-10-19）：管线在 M2 路由后、M4 组合前调结构门禁；fail 时 M2 状态置为 blocked、结果不进 M4（留底）、M4 决策改写为「阻塞：M2 结构门禁 fail」。门禁配置项为 `gate.m2_principles`。
+**总线挂载**（knowledge_harness，2026-10-19）：`bus/controller.py` 在 M2 路由后、M4 组合前调 `adapters.run_m2_gate()`；fail 时 `m2.status=blocked_by_gate`、结果不进 M4（留底 `m2_blocked_content`）、M4 决策改写「阻塞：M2 结构门禁 fail」。配置在 `knowledge_harness/config.yaml` 的 `gate.m2_principles`。三态流转测试日志见 `test-output/M2门禁-总线流转测试日志-20261019.md`。
 
 ## 六.6、封版（Seal）与颠覆（Supersession）· v0.4 P0
 
-对标桥水的落点：**封的是"文本+证据的快照"，不是"信念"**——2011 版原文说原则是 evolving document、要持续 stress test，所以封版必带 `next_review_at`，被推翻只能继任、不能删改。设计全文见 `<internal-docs>/docs/principle-seal-and-supersession-v0.1.md`；schema 侧见 `principles.schema.json` v0.4（I7–I11 不变式、`seal`/`supersession` 字段、`sealed`/`overturned` 状态）。
+对标桥水的落点：**封的是"文本+证据的快照"，不是"信念"**——2011 版原文说原则是 evolving document、要持续 stress test，所以封版必带 `next_review_at`，被推翻只能继任、不能删改。设计全文见 `<internal-docs>/docs/principle-seal-and-supersession-v0.1.md`；schema 侧见 `v1-design/schemas/principles.schema.json` v0.4（I7–I11 不变式、`seal`/`supersession` 字段、`sealed`/`overturned` 状态）。
 
 **操作端**（先账本后 JSON，I11）：
 
@@ -217,10 +217,10 @@ plugins/dsh-principles-audit/
 - 相似度是字符 2-gram Jaccard，不是语义向量；同义改写不一定能抓到。
 - 维度覆盖依赖 `principle-dimension-mapping.json`；没有映射时跳过并给 info。
 - 报告写入优先 `<root>/.principles-audit`，失败时回退 `~/.dsh/principles-audit`。
-- 门禁只认结构一致性（严重项）；「原则是否成立/反例是否真实」的质量审查由独立的质量审查流程（D1–D6）承担，两者互补。
+- 门禁只认结构一致性（严重项）；「原则是否成立/反例是否真实」的质量审查由 `knowledge_harness/skills/composite/principle_quality_audit`（D1–D6）承担，两者互补。
 
 ## 九、来源
 
-- 审查口径对齐 `principles.schema.json` 的 I1–I6 不变式与 `config/scoring.json` 的状态规则。
-- 维度口径对齐 `principle-dimension-mapping.json`（V1.5 维度映射）与「支持集<5 → 观察项」规则。
+- 审查口径对齐 `<materials-root>/v1-design/schemas/principles.schema.json` 的 I1–I6 不变式与 `config/scoring.json` 的状态规则。
+- 维度口径对齐 `<materials-root>/v3v4-review/principle-dimension-mapping.json`（12 维度 / 104 条）与 M4 的「支持集<5 → 观察项」规则。
 - 插件结构参照同目录 `dsh-office-audit`（host-only、零运行时依赖）。

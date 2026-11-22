@@ -12,7 +12,7 @@
  *
  * 记录格式（JSONL 每行一条，或 CSV 带表头）：
  *   {"record_id":"VR-2026-0001","principle_id":"<项目B>-PR-001","occurred_at":"2026-10-19",
- *    "result":"hit","project_ref":"<项目B>","scenario":"示例场景",
+ *    "result":"hit","project_ref":"<项目B>","scenario":"2024 年债务集中到期",
  *    "evidence":"投后报告：2026Q2 借款展期完成","source":"投后报告","recorded_by":"manual"}
  *
  * 纪律：import 前全量校验；任一错误拒绝写入；写前备份；I2：counts = records 计数，不手填。
@@ -44,7 +44,7 @@ function parseArgs(argv) {
 function defaultLibrary() {
   const override = process.env.DSH_PRINCIPLES_AUDIT_DIR
   if (typeof override === 'string' && override.trim() !== '') return override
-  return resolve(process.env.DSH_PRINCIPLES_AUDIT_DIR || join(process.cwd(), 'principle-dashboard-v2'))
+  return resolve(homedir(), 'wps云盘', '<材料目录>', 'principle-dashboard-v2')
 }
 
 /* ---------------- 解析 ---------------- */
